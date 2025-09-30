@@ -3,4 +3,5 @@
     npm -v, appium -v, adb devices
 2. Start the Appium server: Appium
 3. Check the .apk app path if missing
-4. 
+4. run the tests
+5. 
