@@ -22,10 +22,10 @@ public class appiumBasics {
                 .withArgument(GeneralServerFlag.SESSION_OVERRIDE).withIPAddress("127.0.0.1").usingPort(4723).build();
         service.start();
 
-
         UiAutomator2Options options = new UiAutomator2Options();
         options.setDeviceName("Pixel 3a Maruti");
-        options.setApp("C://Users//marut//IdeaProjects//Appi_auto_1//src//test//resources//ApiDemos-debug.apk");
+        options.setApp(System.getProperty("user.dir")+"\\src\\test\\resources\\ApiDemos-debug.apk");
+
         //options.setCapability("max-duration", 50000);
         options.setCapability("newCommandTimeout", 50000);
 

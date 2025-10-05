@@ -23,25 +23,25 @@ public class BaseTest {
     AppiumDriverLocalService service;
 
     @BeforeClass
-    public void configureAppium() throws URISyntaxException, MalformedURLException {
+    public AndroidDriver configureAppium() throws URISyntaxException, MalformedURLException {
         service= new AppiumServiceBuilder().withAppiumJS(new File("C://Users//marut//AppData//Roaming//npm//node_modules//appium//build//lib//main.js"))
                 .withArgument(GeneralServerFlag.SESSION_OVERRIDE).withIPAddress("127.0.0.1").usingPort(4723).build();
         service.start();
 
         UiAutomator2Options options = new UiAutomator2Options();
         options.setDeviceName("Pixel 3a Maruti");
-        options.setApp("C://Users//marut//IdeaProjects//Appi_auto_1//src//test//resources//ApiDemos-debug.apk");
+        options.setApp(System.getProperty("user.dir")+"\\src\\test\\resources\\ApiDemos-debug.apk");
 
         options.setCapability("newCommandTimeout", 50000);
-
 
         driver =new AndroidDriver(new URI("http://127.0.0.1:4723").toURL(), options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
+        return driver;
     }
 
     @AfterClass
-    public void tearDown(){
+    public void tearDown(AndroidDriver driver){
 
         driver.quit();
         service.stop();
